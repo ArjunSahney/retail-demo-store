@@ -9,7 +9,7 @@ set -e
 # Delete .env if it exists
 [ -e ".env" ] && rm .env
 
-printf 'VITE_GO_COMPONENTS_SERVICE_DOMAIN=%s\n' "$ORDERS_SERVICE_URL" >> .env
+printf 'VITE_GO_COMPONENTS_SERVICE_DOMAIN=%s\n' "$DEPLOYED_REGION" >> .env
 printf 'VITE_PRODUCTS_SERVICE_DOMAIN=%s\n' "$PRODUCTS_SERVICE_URL" >> .env
 printf 'VITE_USERS_SERVICE_DOMAIN=%s\n' "$USERS_SERVICE_URL" >> .env
 printf 'VITE_CARTS_SERVICE_DOMAIN=%s\n' "$CARTS_SERVICE_URL" >> .env
