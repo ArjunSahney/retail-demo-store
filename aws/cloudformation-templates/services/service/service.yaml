@@ -50,6 +50,14 @@ Parameters:
     Type: String
     Default: none
 
+  EnvGoComponentsServiceInternalUrl:
+    Type: String
+    Default: gocomponents.retaildemostore.local
+
+  EnvGoComponentssServiceInternalPort:
+    Type: String
+    Default: 80
+
   EnvProductsServiceInternalUrl:
     Type: String
     Default: products.retaildemostore.local
@@ -349,6 +357,10 @@ Resources:
               Value: !Ref EnvPersonalizeCampaignArn
             - Name: SEARCH_CAMPAIGN_ARN
               Value: !Ref EnvPersonalizeSearchCampaignArn
+            - Name: GOCOMPONENTS_SERVICE_HOST
+              Value: !Ref EnvGoComponentsServiceInternalUrl
+            - Name: GOCOMPONENTS_SERVICE_PORT
+              Value: '80'
             - Name: PRODUCTS_SERVICE_HOST
               Value: !Ref EnvProductsServiceInternalUrl
             - Name: PRODUCTS_SERVICE_PORT

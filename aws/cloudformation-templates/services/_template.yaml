@@ -140,6 +140,42 @@ Parameters:
     Type: String
 
 Resources:
+  GoComponentsService:
+      Type: AWS::CloudFormation::Stack
+      Properties:
+        TemplateURL: !Sub https://s3.amazonaws.com/${ResourceBucket}/${ResourceBucketRelativePath}cloudformation-templates/services/service/_template.yaml
+        Parameters:
+          ServiceName: go-components
+          ServicePath: src/go-components
+          ResourceBucket: !Ref ResourceBucket
+          ResourceBucketRelativePath: !Ref ResourceBucketRelativePath
+          SourceDeploymentType: !Ref SourceDeploymentType
+          GitHubRepo: !Ref GitHubRepo
+          GitHubBranch: !Ref GitHubBranch
+          GitHubToken: !Ref GitHubToken
+          GitHubUser: !Ref GitHubUser
+          UserPoolId: !Ref UserPoolId
+          UserPoolClientId: !Ref UserPoolClientId
+          IdentityPoolId: !Ref IdentityPoolId
+          StackBucketName: !Ref StackBucketName
+          Subnets: !Ref Subnets
+          VpcId: !Ref VpcId
+          VpcCidr: !Ref VpcCidr
+          ClusterName: !Ref ClusterName
+          ServiceDiscoveryNamespace: !Ref ServiceDiscoveryNamespace
+          ProductsTable: !Ref ProductsTable
+          CategoriesTable: !Ref CategoriesTable
+          ExperimentStrategyTable: !Ref ExperimentStrategyTable
+          ParameterPersonalizeEventTrackerId: !Ref ParameterPersonalizeEventTrackerId
+          ParameterAmplitudeApiKey: !Ref ParameterAmplitudeApiKey
+          ParameterOptimizelySdkKey: !Ref ParameterOptimizelySdkKey
+          CleanupBucketLambdaArn: !Ref CleanupBucketLambdaArn
+          DeleteRepositoryLambdaArn: !GetAtt DeleteRepositoryLambdaFunction.Arn
+          WebRootUrl: !Ref WebRootUrl
+          ImageRootUrl: !Ref ImageRootUrl
+          Uid: !Sub ${ParentStackName}-${AWS::Region}
+          EvidentlyProjectName: !Ref EvidentlyProjectName
+          LoggingBucketName: !Ref LoggingBucketName
 
   ProductsService:
     Type: AWS::CloudFormation::Stack
@@ -563,6 +599,15 @@ Resources:
                 Resource: !Sub 'arn:aws:ecr:${AWS::Region}:${AWS::AccountId}:repository/retaildemostore*'
 
 Outputs:
+
+  GoComponentsServiceUrl:
+    Description: Go Components load balancer URL.
+    Value: !GetAtt GoComponentsService.Outputs.ServiceUrl
+
+  GoComponentsServiceELBListener:
+    Description: Go Components Service ELB Arn
+    Value: !GetAtt GoComponentsService.Outputs.ServiceELBListener
+
   ProductsServiceUrl:
     Description: Products load balancer URL.
     Value: !GetAtt ProductsService.Outputs.ServiceUrl

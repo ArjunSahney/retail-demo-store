@@ -133,6 +133,19 @@ Resources:
       Principal: apigateway.amazonaws.com
       SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${HttpAPI}/authorizers/${LambdaAuthorizer}"
   
+  GoComponentsServiceIntegration:
+    Type: 'AWS::ApiGatewayV2::Integration'
+    Properties:
+      ApiId: !Ref HttpAPI
+      Description: Product Service Integration
+      ConnectionId: !Ref VpcLink
+      ConnectionType: VPC_LINK
+      IntegrationMethod: ANY
+      IntegrationType: HTTP_PROXY
+      IntegrationUri: !Ref GoComponentsServiceELBListener
+      PassthroughBehavior: WHEN_NO_MATCH
+      PayloadFormatVersion: '1.0'
+
   ProductsServiceIntegration:
     Type: 'AWS::ApiGatewayV2::Integration'
     Properties:
@@ -247,7 +260,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref ProductsServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetCategory:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -259,7 +272,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref ProductsServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetFeatured:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -271,7 +284,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref ProductsServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetCategories:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -283,7 +296,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref ProductsServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   CreateUser:
     Type: 'AWS::ApiGatewayV2::Route'

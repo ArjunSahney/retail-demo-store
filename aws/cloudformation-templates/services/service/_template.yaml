@@ -91,6 +91,10 @@ Parameters:
   ServiceDiscoveryNamespace:
     Type: String
 
+  GoComponentsServiceExternalUrl:
+    Type: String
+    Default: none
+
   ProductsServiceExternalUrl:
     Type: String
     Default: none
@@ -252,6 +256,7 @@ Resources:
         IdentityPoolId: !Ref IdentityPoolId
         StackBucketName: !Ref StackBucketName
         FargateServiceName: !GetAtt Service.Outputs.FargateServiceName
+        GoComponentsServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
         ProductsServiceExternalUrl: !Ref ProductsServiceExternalUrl
         UsersServiceExternalUrl: !Ref UsersServiceExternalUrl
         CartsServiceExternalUrl: !Ref CartsServiceExternalUrl
@@ -289,6 +294,8 @@ Resources:
         ContainerImage: amazon/amazon-ecs-sample
         EnvPersonalizeCampaignArn: !Ref EnvPersonalizeCampaignArn
         EnvPersonalizeSearchCampaignArn: !Ref EnvPersonalizeSearchCampaignArn
+        EnvGoComponentsServiceInternalUrl: !Ref EnvGoComponentsServiceInternalUrl
+        EnvGoComponentsServiceInternalPort: !Ref EnvGoComponentsServiceInternalPort
         EnvProductsServiceInternalUrl: !Ref EnvProductsServiceInternalUrl
         EnvProductsServiceInternalPort: !Ref EnvProductsServiceInternalPort
         EnvUsersServiceInternalUrl: !Ref EnvUsersServiceInternalUrl

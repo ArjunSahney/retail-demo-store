@@ -572,6 +572,7 @@ Resources:
     Properties:
       TemplateURL: !Sub https://s3.amazonaws.com/${ResourceBucket}/${ResourceBucketRelativePath}cloudformation-templates/apigateway.yaml
       Parameters:
+        GoComponentsServiceELBListener: !GetAtt Services.Outputs.GoComponentsServiceELBListener
         ProductsServiceELBListener: !GetAtt Services.Outputs.ProductsServiceELBListener
         UsersServiceELBListener: !GetAtt Services.Outputs.UsersServiceELBListener
         CartsServiceELBListener: !GetAtt Services.Outputs.CartsServiceELBListener
@@ -860,6 +861,10 @@ Outputs:
   AlexaSkillEndpointArn:
     Description: Arn of AWS Lambda function that can be a back-end
     Value: !If [DeployAlexaEndpoint, !GetAtt Alexa.Outputs.AlexaSkillEndpointArn, "NotDeployed"]
+
+  GoComponentsServiceUrl:
+    Description: Go Components load balancer URL.
+    Value: !GetAtt Services.Outputs.GoComponentsServiceUrl
 
   ProductsServiceUrl:
     Description: Products load balancer URL.

@@ -51,6 +51,10 @@ Parameters:
   FargateServiceName:
     Type: String
 
+  GoComponentsServiceExternalUrl:
+    Type: String
+    Default: none
+
   ProductsServiceExternalUrl:
     Type: String
     Default: none
@@ -318,6 +322,8 @@ Resources:
             Value: !Sub ${UserPoolClientId}
           - Name: COGNITO_IDENTITY_POOL_ID
             Value: !Sub ${IdentityPoolId}
+          - Name: GOCOMPONENTS_SERVICE_URL
+            Value: !Sub ${GoComponentsServiceExternalUrl}
           - Name: PRODUCTS_SERVICE_URL
             Value: !Sub ${ProductsServiceExternalUrl}
           - Name: USERS_SERVICE_URL
