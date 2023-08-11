@@ -69,8 +69,8 @@ module.exports = {
   },
   backends: {
     "products-service": {
-      domainOrIp: goComponentsService,
-      hostHeader: goComponentsService,
+      domainOrIp: productsService,
+      hostHeader: productsService,
       disableCheckCert: true,
     },
     "recommendations-service": {
