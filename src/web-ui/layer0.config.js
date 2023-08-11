@@ -37,16 +37,16 @@ const recommendationsService = buildServiceDomain(
   process.env.VITE_RECOMMENDATIONS_SERVICE_PORT
 );
 const cartsService = buildServiceDomain(
-  process.env.VITE_CARTS_SERVICE_DOMAIN,
-  process.env.VITE_CARTS_SERVICE_PORT
+  process.env.VITE_GO_COMPONENTS_SERVICE_DOMAIN,
+  process.env.VITE_GO_COMPONENTS_SERVICE_PORT
 );
 const usersService = buildServiceDomain(
-  process.env.VITE_USERS_SERVICE_DOMAIN,
-  process.env.VITE_USERS_SERVICE_PORT
+  process.env.VITE_GO_COMPONENTS_SERVICE_DOMAIN,
+  process.env.VITE_GO_COMPONENTS_SERVICE_PORT
 );
 const ordersService = buildServiceDomain(
-  process.env.VITE_ORDERS_SERVICE_DOMAIN,
-  process.env.VITE_ORDERS_SERVICE_PORT
+  process.env.VITE_GO_COMPONENTS_SERVICE_DOMAIN,
+  process.env.VITE_GO_COMPONENTS_SERVICE_PORT
 );
 const searchService = buildServiceDomain(
   process.env.VITE_SEARCH_SERVICE_DOMAIN,
