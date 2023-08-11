@@ -54,7 +54,7 @@ Parameters:
     Type: String
     Default: gocomponents.retaildemostore.local
 
-  EnvGoComponentssServiceInternalPort:
+  EnvGoComponentsServiceInternalPort:
     Type: String
     Default: 80
 

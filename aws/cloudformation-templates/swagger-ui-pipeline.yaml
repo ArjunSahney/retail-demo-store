@@ -48,6 +48,10 @@ Parameters:
   GitHubUser:
     Type: String
 
+  GoComponentsServiceExternalUrl:
+    Type: String
+    Default: none
+
   ProductsServiceExternalUrl:
     Type: String
     Default: none
@@ -225,6 +229,8 @@ Resources:
             Value: !Ref SwaggerUIBucketName
           - Name: CLOUDFRONT_DIST_ID
             Value: !Ref SwaggerUICDN
+          - Name: GOCOMPONENTS_SERVICE_URL
+            Value: !Sub ${GoComponentsServiceExternalUrl}
           - Name: PRODUCTS_SERVICE_URL
             Value: !Sub ${ProductsServiceExternalUrl}
           - Name: USERS_SERVICE_URL

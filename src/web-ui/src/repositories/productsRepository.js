@@ -5,9 +5,9 @@ import axios from "axios";
 import resolveBaseURL from './resolveBaseURL'
 
 const baseURL = resolveBaseURL(
-    import.meta.env.VITE_PRODUCTS_SERVICE_DOMAIN,
-    import.meta.env.VITE_PRODUCTS_SERVICE_PORT,
-    import.meta.env.VITE_PRODUCTS_SERVICE_PATH
+    import.meta.env.VITE_GO_COMPONENTS_SERVICE_DOMAIN,
+    import.meta.env.VITE_GO_COMPONENTS_SERVICE_PORT,
+    import.meta.env.VITE_GO_COMPONENTS_SERVICE_PATH
 )
 
 const connection = axios.create({

@@ -30,6 +30,10 @@ Parameters:
   PinpointEmailFromAddress:
     Type: String
 
+  GoComponentsServiceExternalUrl:
+    Type: String
+    Default: none
+
   ProductsServiceExternalUrl:
     Type: String
     Default: none
@@ -287,6 +291,7 @@ Resources:
           UserPoolId: !Ref UserPoolId
           PinpointAppId: !Ref PinpointAppId
           EmailFromAddress: !Ref PinpointEmailFromAddress
+          GoComponentsServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
           ProductsServiceExternalUrl: !Ref ProductsServiceExternalUrl
           CartsServiceExternalUrl: !Ref CartsServiceExternalUrl
           OrdersServiceExternalUrl: !Ref OrdersServiceExternalUrl

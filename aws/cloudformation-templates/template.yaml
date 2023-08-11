@@ -661,6 +661,7 @@ Resources:
         GitHubBranch: !Ref GitHubBranch
         GitHubToken: !Ref GitHubToken
         GitHubUser: !Ref GitHubUser
+        GoComponentsServiceExternalUrl: !GetAtt ApiGateway.Outputs.APIEndpoint
         ProductsServiceExternalUrl: !GetAtt ApiGateway.Outputs.APIEndpoint
         UsersServiceExternalUrl: !GetAtt ApiGateway.Outputs.APIEndpoint
         CartsServiceExternalUrl: !GetAtt ApiGateway.Outputs.APIEndpoint
@@ -699,6 +700,7 @@ Resources:
         DeployDefaultGeofence: !Ref DeployPersonalizedOffersCampaign
         PinpointAppId: !GetAtt Base.Outputs.PinpointAppId
         PinpointEmailFromAddress: !Ref PinpointEmailFromAddress
+        GoComponentsServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
         ProductsServiceExternalUrl: !GetAtt Services.Outputs.ProductsServiceUrl
         CartsServiceExternalUrl: !GetAtt Services.Outputs.CartsServiceUrl
         OrdersServiceExternalUrl: !GetAtt Services.Outputs.OrdersServiceUrl
@@ -731,6 +733,7 @@ Resources:
         PinpointAppId: !GetAtt Base.Outputs.PinpointAppId
         ResourceBucket: !Ref ResourceBucket
         ResourceBucketRelativePath: !Ref ResourceBucketRelativePath
+        GoComponentsServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
         ProductsServiceExternalUrl: !GetAtt Services.Outputs.ProductsServiceUrl
         LocationServiceExternalUrl: !GetAtt Services.Outputs.LocationServiceUrl
         OrdersServiceExternalUrl: !GetAtt Services.Outputs.OrdersServiceUrl
@@ -772,6 +775,7 @@ Resources:
         PinpointEmailFromAddress: !Ref PinpointEmailFromAddress
         PinpointEmailFromName: !Ref PinpointEmailFromName
         UseDefaultIVSStreams: !Ref UseDefaultIVSStreams
+        GoComponentsServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
         ProductsServiceExternalUrl: !GetAtt Services.Outputs.ProductsServiceUrl
         DeployPersonalizedOffersCampaign: !Ref DeployPersonalizedOffersCampaign
         PersonalizeRoleArn: !GetAtt Base.Outputs.PersonalizeRoleArn

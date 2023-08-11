@@ -94,6 +94,9 @@ Parameters:
     Type: String
     Default: Yes
 
+  GoComponentsServiceExternalUrl:
+    Type: String
+    
   ProductsServiceExternalUrl:
     Type: String
 
@@ -157,6 +160,7 @@ Resources:
           lambda_event_rule_name: 'RetailDemoStore-PersonalizePreCreateScheduledRule'
           Uid: !Ref Uid
           DeployPersonalizedOffersCampaign: !Ref DeployPersonalizedOffersCampaign
+          GoComponentsServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
           ProductsServiceExternalUrl: !Ref ProductsServiceExternalUrl
           PersonalizeRoleArn: !Ref PersonalizeRoleArn
           PreCreatePersonalizeResources: !Ref PreCreatePersonalizeResources          

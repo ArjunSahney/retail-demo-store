@@ -135,6 +135,14 @@ Parameters:
     Type: String
     Default: none
 
+  EnvGoComponentsServiceInternalUrl:
+    Type: String
+    Default: gocomponents.retaildemostore.local
+
+  EnvGoComponentsServiceInternalPort:
+    Type: String
+    Default: 80
+
   EnvProductsServiceInternalUrl:
     Type: String
     Default: products.retaildemostore.local
