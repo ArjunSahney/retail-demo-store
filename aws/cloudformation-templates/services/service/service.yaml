@@ -362,11 +362,11 @@ Resources:
             - Name: GOCOMPONENTS_SERVICE_PORT
               Value: '80'
             - Name: PRODUCTS_SERVICE_HOST
-              Value: !Ref EnvProductsServiceInternalUrl
+              Value: !Ref EnvGoComponentsServiceInternalUrl
             - Name: PRODUCTS_SERVICE_PORT
               Value: '80'
             - Name: USERS_SERVICE_HOST
-              Value: !Ref EnvUsersServiceInternalUrl
+              Value: !Ref EnvGoComponentsServiceInternalUrl
             - Name: USERS_SERVICE_PORT
               Value: '80'
             - Name: SEARCH_SERVICE_HOST

@@ -325,15 +325,15 @@ Resources:
           - Name: GOCOMPONENTS_SERVICE_URL
             Value: !Sub ${GoComponentsServiceExternalUrl}
           - Name: PRODUCTS_SERVICE_URL
-            Value: !Sub ${ProductsServiceExternalUrl}
+            Value: !Sub ${GoComponentsServiceExternalUrl}
           - Name: USERS_SERVICE_URL
-            Value: !Sub ${UsersServiceExternalUrl}
+            Value: !Sub ${GoComponentsServiceExternalUrl}
           - Name: CARTS_SERVICE_URL
-            Value: !Sub ${CartsServiceExternalUrl}
+            Value: !Sub ${GoComponentsServiceExternalUrl}
           - Name: VIDEOS_SERVICE_URL
             Value: !Sub ${VideosServiceExternalUrl}
           - Name: ORDERS_SERVICE_URL
-            Value: !Sub ${OrdersServiceExternalUrl}
+            Value: !Sub ${GoComponentsServiceExternalUrl}
           - Name: RECOMMENDATIONS_SERVICE_URL
             Value: !Sub ${RecommendationsServiceExternalUrl}
           - Name: SEARCH_SERVICE_URL

@@ -610,35 +610,35 @@ Outputs:
 
   ProductsServiceUrl:
     Description: Products load balancer URL.
-    Value: !GetAtt ProductsService.Outputs.ServiceUrl
+    Value: !GetAtt GoComponentsService.Outputs.ServiceUrl
 
   ProductsServiceELBListener:
     Description: Products Service ELB Arn
-    Value: !GetAtt ProductsService.Outputs.ServiceELBListener
+    Value: !GetAtt GoComponentsService.Outputs.ServiceELBListener
 
   UsersServiceUrl:
     Description: Users load balancer URL.
-    Value: !GetAtt UsersService.Outputs.ServiceUrl
+    Value: !GetAtt GoComponentsService.Outputs.ServiceUrl
   
   UsersServiceELBListener:
     Description: Users Service ELB Arn
-    Value: !GetAtt UsersService.Outputs.ServiceELBListener
+    Value: !GetAtt GoComponentsService.Outputs.ServiceELBListener
 
   CartsServiceUrl:
     Description: Carts load balancer URL.
-    Value: !GetAtt CartsService.Outputs.ServiceUrl
+    Value: !GetAtt GoComponentsService.Outputs.ServiceUrl
 
   CartsServiceELBListener:
     Description: Carts ELB Arn
-    Value: !GetAtt CartsService.Outputs.ServiceELBListener
+    Value: !GetAtt GoComponentsService.Outputs.ServiceELBListener
 
   OrdersServiceUrl:
     Description: Orders load balancer URL.
-    Value: !GetAtt OrdersService.Outputs.ServiceUrl
+    Value: !GetAtt GoComponentsService.Outputs.ServiceUrl
 
   OrdersServiceELBListener:
     Description: Orders ELB Arn
-    Value: !GetAtt OrdersService.Outputs.ServiceELBListener
+    Value: !GetAtt GoComponentsService.Outputs.ServiceELBListener
 
   LocationServiceUrl:
     Description: Location load balancer URL.

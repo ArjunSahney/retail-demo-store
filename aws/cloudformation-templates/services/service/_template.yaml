@@ -265,11 +265,11 @@ Resources:
         StackBucketName: !Ref StackBucketName
         FargateServiceName: !GetAtt Service.Outputs.FargateServiceName
         GoComponentsServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
-        ProductsServiceExternalUrl: !Ref ProductsServiceExternalUrl
-        UsersServiceExternalUrl: !Ref UsersServiceExternalUrl
-        CartsServiceExternalUrl: !Ref CartsServiceExternalUrl
+        ProductsServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
+        UsersServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
+        CartsServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
         VideosServiceExternalUrl: !Ref VideosServiceExternalUrl
-        OrdersServiceExternalUrl: !Ref OrdersServiceExternalUrl
+        OrdersServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
         RecommendationsServiceExternalUrl: !Ref RecommendationsServiceExternalUrl
         SearchServiceExternalUrl: !Ref SearchServiceExternalUrl
         PinpointAppId: !Ref PinpointAppId

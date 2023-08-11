@@ -573,7 +573,7 @@ Resources:
       TemplateURL: !Sub https://s3.amazonaws.com/${ResourceBucket}/${ResourceBucketRelativePath}cloudformation-templates/apigateway.yaml
       Parameters:
         GoComponentsServiceELBListener: !GetAtt Services.Outputs.GoComponentsServiceELBListener
-        ProductsServiceELBListener: !GetAtt Services.Outputs.ProductsServiceELBListener
+        ProductsServiceELBListener: !GetAtt Services.Outputs.GoComponentsServiceELBListener
         UsersServiceELBListener: !GetAtt Services.Outputs.UsersServiceELBListener
         CartsServiceELBListener: !GetAtt Services.Outputs.CartsServiceELBListener
         OrdersServiceELBListener: !GetAtt Services.Outputs.OrdersServiceELBListener
@@ -701,9 +701,9 @@ Resources:
         PinpointAppId: !GetAtt Base.Outputs.PinpointAppId
         PinpointEmailFromAddress: !Ref PinpointEmailFromAddress
         GoComponentsServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
-        ProductsServiceExternalUrl: !GetAtt Services.Outputs.ProductsServiceUrl
-        CartsServiceExternalUrl: !GetAtt Services.Outputs.CartsServiceUrl
-        OrdersServiceExternalUrl: !GetAtt Services.Outputs.OrdersServiceUrl
+        ProductsServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
+        CartsServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
+        OrdersServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
         OffersServiceExternalUrl: !GetAtt Services.Outputs.OffersServiceUrl
         UsersServiceExternalUrl: !GetAtt Services.Outputs.UsersServiceUrl
         WebURL: !GetAtt Base.Outputs.WebUICDNURL
@@ -734,10 +734,10 @@ Resources:
         ResourceBucket: !Ref ResourceBucket
         ResourceBucketRelativePath: !Ref ResourceBucketRelativePath
         GoComponentsServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
-        ProductsServiceExternalUrl: !GetAtt Services.Outputs.ProductsServiceUrl
+        ProductsServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
         LocationServiceExternalUrl: !GetAtt Services.Outputs.LocationServiceUrl
-        OrdersServiceExternalUrl: !GetAtt Services.Outputs.OrdersServiceUrl
-        CartsServiceExternalUrl: !GetAtt Services.Outputs.CartsServiceUrl
+        OrdersServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
+        CartsServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
         RecommendationsServiceExternalUrl: !GetAtt Services.Outputs.RecommendationsServiceUrl
         LocationResourceName:
           !If [
@@ -776,7 +776,7 @@ Resources:
         PinpointEmailFromName: !Ref PinpointEmailFromName
         UseDefaultIVSStreams: !Ref UseDefaultIVSStreams
         GoComponentsServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
-        ProductsServiceExternalUrl: !GetAtt Services.Outputs.ProductsServiceUrl
+        ProductsServiceExternalUrl: !GetAtt Services.Outputs.GoComponentsServiceUrl
         DeployPersonalizedOffersCampaign: !Ref DeployPersonalizedOffersCampaign
         PersonalizeRoleArn: !GetAtt Base.Outputs.PersonalizeRoleArn
 
@@ -872,19 +872,19 @@ Outputs:
 
   ProductsServiceUrl:
     Description: Products load balancer URL.
-    Value: !GetAtt Services.Outputs.ProductsServiceUrl
+    Value: !GetAtt Services.Outputs.GoComponentsServiceUrl
 
   UsersServiceUrl:
     Description: Users load balancer URL.
-    Value: !GetAtt Services.Outputs.UsersServiceUrl
+    Value: !GetAtt Services.Outputs.GoComponentsServiceUrl
 
   CartsServiceUrl:
     Description: Carts load balancer URL.
-    Value: !GetAtt Services.Outputs.CartsServiceUrl
+    Value: !GetAtt Services.Outputs.GoComponentsServiceUrl
 
   OrdersServiceUrl:
     Description: Orders load balancer URL.
-    Value: !GetAtt Services.Outputs.OrdersServiceUrl
+    Value: !GetAtt Services.Outputs.GoComponentsServiceUrl
 
   LocationServiceUrl:
     Description: Location load balancer URL.
