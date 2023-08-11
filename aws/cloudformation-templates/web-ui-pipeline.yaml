@@ -391,6 +391,8 @@ Resources:
             Value: !Sub ${UserPoolClientId}
           - Name: COGNITO_IDENTITY_POOL_ID
             Value: !Sub ${IdentityPoolId}
+          - Name: GOCOMPONENTS_SERVICE_URL
+            Value: !Ref APIGatewayUrl
           - Name: PRODUCTS_SERVICE_URL
             Value: !Ref APIGatewayUrl
           - Name: USERS_SERVICE_URL

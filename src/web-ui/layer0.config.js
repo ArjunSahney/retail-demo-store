@@ -29,8 +29,8 @@ const goComponentsService = buildServiceDomain(
   process.env.VITE_GO_COMPONENTS_SERVICE_PORT
 );
 const productsService = buildServiceDomain(
-  process.env.VITE_PRODUCTS_SERVICE_DOMAIN,
-  process.env.VITE_PRODUCTS_SERVICE_PORT
+  process.env.VITE_GO_COMPONENTS_SERVICE_DOMAIN,
+  process.env.VITE_GO_COMPONENTS_SERVICE_PORT
 );
 const recommendationsService = buildServiceDomain(
   process.env.VITE_RECOMMENDATIONS_SERVICE_DOMAIN,
