@@ -24,6 +24,10 @@ const buildServiceDomain = (domain, port) => {
 // For local dev, this should be `localhost`
 // When deployed, each service should have its domain defined to the
 //   ELB domain provided by AWS
+const goComponentsService = buildServiceDomain(
+  process.env.VITE_GO_COMPONENTS_SERVICE_DOMAIN,
+  process.env.VITE_GO_COMPONENTS_SERVICE_PORT
+);
 const productsService = buildServiceDomain(
   process.env.VITE_PRODUCTS_SERVICE_DOMAIN,
   process.env.VITE_PRODUCTS_SERVICE_PORT
@@ -65,8 +69,8 @@ module.exports = {
   },
   backends: {
     "products-service": {
-      domainOrIp: productsService,
-      hostHeader: productsService,
+      domainOrIp: goComponentsService,
+      hostHeader: goComponentsService,
       disableCheckCert: true,
     },
     "recommendations-service": {
