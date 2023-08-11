@@ -5,6 +5,8 @@ Description: >
     This template deploys the Retail Demo Store API Gateway
 
 Parameters:
+  GoComponentsServiceELBListener:
+    Type: String
   ProductsServiceELBListener:
     Type: String
   UsersServiceELBListener:
@@ -137,7 +139,7 @@ Resources:
     Type: 'AWS::ApiGatewayV2::Integration'
     Properties:
       ApiId: !Ref HttpAPI
-      Description: Product Service Integration
+      Description: GoComponents Service Integration
       ConnectionId: !Ref VpcLink
       ConnectionType: VPC_LINK
       IntegrationMethod: ANY
@@ -404,7 +406,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref CartsServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetCart:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -416,7 +418,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref CartsServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   UpdateCart:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -428,7 +430,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref CartsServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   Sign:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -452,7 +454,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref OrdersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetOrders:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -464,7 +466,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref OrdersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetOrderById:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -476,7 +478,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref OrdersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetOrderByUsername:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -488,7 +490,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref OrdersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetRecommendations:
     Type: 'AWS::ApiGatewayV2::Route'
