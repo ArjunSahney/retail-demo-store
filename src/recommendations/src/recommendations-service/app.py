@@ -148,7 +148,7 @@ def get_products_service_host_and_port() -> Tuple[str, int]:
         # Get product service instance. We'll need it rehydrate product info for recommendations.
         response = servicediscovery.discover_instances(
             NamespaceName='retaildemostore.local',
-            ServiceName='products',
+            ServiceName='go-components',
             MaxResults=1,
             HealthStatus='HEALTHY'
         )
