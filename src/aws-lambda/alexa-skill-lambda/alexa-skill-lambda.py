@@ -42,9 +42,9 @@ logger.setLevel(logging.INFO)
 
 load_dotenv()
 
-CARTS_SERVICE_URL = os.environ.get('CartsServiceExternalUrl')
-ORDER_SERVICE_URL = os.environ.get('OrdersServiceExternalUrl')
-PRODUCT_SERVICE_URL = os.environ.get('ProductsServiceExternalUrl')
+CARTS_SERVICE_URL = os.environ.get('GoComponentsServiceExternalUrl')
+ORDER_SERVICE_URL = os.environ.get('GoComponentsServiceExternalUrl')
+PRODUCT_SERVICE_URL = os.environ.get('GoComponentsServiceExternalUrl')
 RECOMMENDATIONS_SERVICE_URL = os.environ.get('RecommendationsServiceExternalUrl')
 LOCATION_SERVICE_URL = os.environ.get('LocationServiceExternalUrl')
 
