@@ -310,7 +310,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref UsersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetUserById:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -322,7 +322,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref UsersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   UpdateUser:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -334,7 +334,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref UsersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetUserByUsername:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -346,7 +346,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref UsersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetUnclaimedUser:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -358,7 +358,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref UsersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   GetRandomUser:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -370,7 +370,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref UsersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   ClaimUser:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -382,7 +382,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref UsersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   VerifyPhone:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -394,7 +394,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref UsersServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   CreateCart:
     Type: 'AWS::ApiGatewayV2::Route'
@@ -442,7 +442,7 @@ Resources:
       Target: !Join 
         - /
         - - integrations
-          - !Ref CartsServiceIntegration
+          - !Ref GoComponentsServiceIntegration
 
   CreateOrder:
     Type: 'AWS::ApiGatewayV2::Route'
