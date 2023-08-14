@@ -135,6 +135,14 @@ Parameters:
     Type: String
     Default: none
 
+  EnvPythonComponentsServiceInternalUrl:
+    Type: String
+    Default: pythoncomponents.retaildemostore.local
+
+  EnvPythonComponentsServiceInternalPort:
+    Type: String
+    Default: 80
+
   EnvGoComponentsServiceInternalUrl:
     Type: String
     Default: gocomponents.retaildemostore.local
@@ -304,6 +312,8 @@ Resources:
         EnvPersonalizeSearchCampaignArn: !Ref EnvPersonalizeSearchCampaignArn
         EnvGoComponentsServiceInternalUrl: !Ref EnvGoComponentsServiceInternalUrl
         EnvGoComponentsServiceInternalPort: !Ref EnvGoComponentsServiceInternalPort
+        EnvPythonComponentsServiceInternalUrl: !Ref EnvPythonComponentsServiceInternalUrl
+        EnvPythonComponentsServiceInternalPort: !Ref EnvPythonComponentsServiceInternalPort
         EnvProductsServiceInternalUrl: !Ref EnvProductsServiceInternalUrl
         EnvProductsServiceInternalPort: !Ref EnvProductsServiceInternalPort
         EnvUsersServiceInternalUrl: !Ref EnvUsersServiceInternalUrl

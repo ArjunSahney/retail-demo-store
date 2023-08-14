@@ -50,6 +50,14 @@ Parameters:
     Type: String
     Default: none
 
+  EnvPythonComponentsServiceInternalUrl:
+    Type: String
+    Default: pythoncomponents.retaildemostore.local
+
+  EnvPythonComponentsServiceInternalPort:
+    Type: String
+    Default: 80
+
   EnvGoComponentsServiceInternalUrl:
     Type: String
     Default: gocomponents.retaildemostore.local
@@ -361,6 +369,10 @@ Resources:
               Value: !Ref EnvGoComponentsServiceInternalUrl
             - Name: GOCOMPONENTS_SERVICE_PORT
               Value: '80'
+            - Name: PYTHONCOMPONENTS_SERVICE_HOST
+              Value: !Ref EnvPythonComponentsServiceInternalUrl
+            - Name: PYTHONCOMPONENTS_SERVICE_PORT
+              Value: '80'
             - Name: PRODUCTS_SERVICE_HOST
               Value: !Ref EnvGoComponentsServiceInternalUrl
             - Name: PRODUCTS_SERVICE_PORT
@@ -370,11 +382,11 @@ Resources:
             - Name: USERS_SERVICE_PORT
               Value: '80'
             - Name: SEARCH_SERVICE_HOST
-              Value: !Ref EnvSearchServiceInternalUrl
+              Value: !Ref EnvPythonComponentsServiceInternalUrl
             - Name: SEARCH_SERVICE_PORT
               Value: '80'
             - Name: OFFERS_SERVICE_HOST
-              Value: !Ref EnvOffersServiceInternalUrl
+              Value: !Ref EnvPythonComponentsServiceInternalUrl
             - Name: OFFERS_SERVICE_PORT
               Value: '80'
             - Name: STACK_BUCKET

@@ -888,23 +888,23 @@ Outputs:
 
   LocationServiceUrl:
     Description: Location load balancer URL.
-    Value: !GetAtt Services.Outputs.LocationServiceUrl
+    Value: !GetAtt Services.Outputs.PythonComponentsServiceUrl
 
   RecommendationsServiceUrl:
     Description: Recommendations load balancer URL.
-    Value: !GetAtt Services.Outputs.RecommendationsServiceUrl
+    Value: !GetAtt Services.Outputs.PythonComponentsServiceUrl
 
   VideosServiceUrl:
     Description: Videos load balancer URL.
-    Value: !GetAtt Services.Outputs.VideosServiceUrl
+    Value: !GetAtt Services.Outputs.PythonComponentsServiceUrl
 
   SearchServiceUrl:
     Description: Search load balancer URL.
-    Value: !GetAtt Services.Outputs.SearchServiceUrl
+    Value: !GetAtt Services.Outputs.PythonComponentsServiceUrl
 
   OffersServiceUrl:
     Description: Offers service load balancer URL.
-    Value: !GetAtt Services.Outputs.OffersServiceUrl
+    Value: !GetAtt Services.Outputs.PythonComponentsServiceUrl
   
   APIEndpoint:
     Value: !GetAtt ApiGateway.Outputs.APIEndpoint

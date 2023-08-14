@@ -177,13 +177,13 @@ Resources:
           EvidentlyProjectName: !Ref EvidentlyProjectName
           LoggingBucketName: !Ref LoggingBucketName
 
-  SearchService:
+  PythonComponentsService:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL: !Sub https://s3.amazonaws.com/${ResourceBucket}/${ResourceBucketRelativePath}cloudformation-templates/services/service/_template.yaml
       Parameters:
-        ServiceName: search
-        ServicePath: src/search
+        ServiceName: python-components
+        ServicePath: src/python-components
         ResourceBucket: !Ref ResourceBucket
         ResourceBucketRelativePath: !Ref ResourceBucketRelativePath
         SourceDeploymentType: !Ref SourceDeploymentType
@@ -200,17 +200,57 @@ Resources:
         VpcCidr: !Ref VpcCidr
         ClusterName: !Ref ClusterName
         ServiceDiscoveryNamespace: !Ref ServiceDiscoveryNamespace
+        ProductsTable: !Ref ProductsTable
+        CategoriesTable: !Ref CategoriesTable
+        ExperimentStrategyTable: !Ref ExperimentStrategyTable
         EnvOpenSearchDomainEndpoint: !Ref EnvOpenSearchDomainEndpoint
         ParameterPersonalizeEventTrackerId: !Ref ParameterPersonalizeEventTrackerId
         ParameterAmplitudeApiKey: !Ref ParameterAmplitudeApiKey
         ParameterOptimizelySdkKey: !Ref ParameterOptimizelySdkKey
+        ParameterIVSVideoChannelMap: !Ref ParameterIVSVideoChannelMap
         CleanupBucketLambdaArn: !Ref CleanupBucketLambdaArn
         DeleteRepositoryLambdaArn: !GetAtt DeleteRepositoryLambdaFunction.Arn
+        UseDefaultIVSStreams: !If [UseDefaultIVSStreams, true, false]
         WebRootUrl: !Ref WebRootUrl
         ImageRootUrl: !Ref ImageRootUrl
         Uid: !Sub ${ParentStackName}-${AWS::Region}
         EvidentlyProjectName: !Ref EvidentlyProjectName
         LoggingBucketName: !Ref LoggingBucketName
+
+  # SearchService:
+  #   Type: AWS::CloudFormation::Stack
+  #   Properties:
+  #     TemplateURL: !Sub https://s3.amazonaws.com/${ResourceBucket}/${ResourceBucketRelativePath}cloudformation-templates/services/service/_template.yaml
+  #     Parameters:
+  #       ServiceName: search
+  #       ServicePath: src/search
+  #       ResourceBucket: !Ref ResourceBucket
+  #       ResourceBucketRelativePath: !Ref ResourceBucketRelativePath
+  #       SourceDeploymentType: !Ref SourceDeploymentType
+  #       GitHubRepo: !Ref GitHubRepo
+  #       GitHubBranch: !Ref GitHubBranch
+  #       GitHubToken: !Ref GitHubToken
+  #       GitHubUser: !Ref GitHubUser
+  #       UserPoolId: !Ref UserPoolId
+  #       UserPoolClientId: !Ref UserPoolClientId
+  #       IdentityPoolId: !Ref IdentityPoolId
+  #       StackBucketName: !Ref StackBucketName
+  #       Subnets: !Ref Subnets
+  #       VpcId: !Ref VpcId
+  #       VpcCidr: !Ref VpcCidr
+  #       ClusterName: !Ref ClusterName
+  #       ServiceDiscoveryNamespace: !Ref ServiceDiscoveryNamespace
+  #       EnvOpenSearchDomainEndpoint: !Ref EnvOpenSearchDomainEndpoint
+  #       ParameterPersonalizeEventTrackerId: !Ref ParameterPersonalizeEventTrackerId
+  #       ParameterAmplitudeApiKey: !Ref ParameterAmplitudeApiKey
+  #       ParameterOptimizelySdkKey: !Ref ParameterOptimizelySdkKey
+  #       CleanupBucketLambdaArn: !Ref CleanupBucketLambdaArn
+  #       DeleteRepositoryLambdaArn: !GetAtt DeleteRepositoryLambdaFunction.Arn
+  #       WebRootUrl: !Ref WebRootUrl
+  #       ImageRootUrl: !Ref ImageRootUrl
+  #       Uid: !Sub ${ParentStackName}-${AWS::Region}
+  #       EvidentlyProjectName: !Ref EvidentlyProjectName
+  #       LoggingBucketName: !Ref LoggingBucketName
 
   LocationService:
     Type: AWS::CloudFormation::Stack
@@ -364,8 +404,8 @@ Resources:
         ResourceBucket: !Ref ResourceBucket
         ResourceBucketRelativePath: !Ref ResourceBucketRelativePath
         ProductsServiceDNSName: !GetAtt GoComponentsService.Outputs.ServiceDNSName
-        RecommendationsServiceDNSName: !GetAtt RecommendationsService.Outputs.ServiceDNSName
-        OffersServiceDNSName: !GetAtt OffersService.Outputs.ServiceDNSName
+        RecommendationsServiceDNSName: !GetAtt PythonComponentsService.Outputs.ServiceDNSName
+        OffersServiceDNSName: !GetAtt PythonComponentsService.Outputs.ServiceDNSName
         PinpointAppId: !Ref PinpointAppId
         Uid: !Sub ${ParentStackName}-${AWS::Region}
         LambdaVpcSecurityGroup: !Ref LambdaVpcSecurityGroup
@@ -468,6 +508,15 @@ Outputs:
     Description: Go Components Service ELB Arn
     Value: !GetAtt GoComponentsService.Outputs.ServiceELBListener
 
+  PythonComponentsServiceUrl:
+    Description: Python Components load balancer URL.
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceUrl
+
+  PythonComponentsServiceELBListener:
+    Description: Python Components Service ELB Arn
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceELBListener
+
+
   ProductsServiceUrl:
     Description: Products load balancer URL.
     Value: !GetAtt GoComponentsService.Outputs.ServiceUrl
@@ -502,43 +551,43 @@ Outputs:
 
   LocationServiceUrl:
     Description: Location load balancer URL.
-    Value: !GetAtt LocationService.Outputs.ServiceUrl
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceUrl
 
   LocationServiceELBListener:
     Description: Location ELB Arn
-    Value: !GetAtt LocationService.Outputs.ServiceELBListener
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceELBListener
 
   RecommendationsServiceUrl:
     Description: Recommendations load balancer URL.
-    Value: !GetAtt RecommendationsService.Outputs.ServiceUrl
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceUrl
 
   RecommendationsServiceELBListener:
     Description: Recommendations ELB Arn
-    Value: !GetAtt RecommendationsService.Outputs.ServiceELBListener
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceELBListener
 
   VideosServiceUrl:
     Description: Videos load balancer URL.
-    Value: !GetAtt VideosService.Outputs.ServiceUrl
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceUrl
 
   VideosServiceELBListener:
     Description: Videos ELB Arn
-    Value: !GetAtt VideosService.Outputs.ServiceELBListener
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceELBListener
 
   SearchServiceUrl:
     Description: Search load balancer URL.
-    Value: !GetAtt SearchService.Outputs.ServiceUrl
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceUrl
 
   SearchServiceELBListener:
     Description: Search ELB Arn
-    Value: !GetAtt SearchService.Outputs.ServiceELBListener
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceELBListener
 
   OffersServiceUrl:
     Description: Offers service load balancer URL.
-    Value: !GetAtt OffersService.Outputs.ServiceUrl
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceUrl
 
   OffersServiceELBListener:
     Description: Offers ELB Arn
-    Value: !GetAtt OffersService.Outputs.ServiceELBListener
+    Value: !GetAtt PythonComponentsService.Outputs.ServiceELBListener
 
   PinpointPersonalizeRoleArn:
       Value: !GetAtt PinpointPersonalize.Outputs.PinpointPersonalizeRoleArn
