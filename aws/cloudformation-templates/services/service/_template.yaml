@@ -91,6 +91,10 @@ Parameters:
   ServiceDiscoveryNamespace:
     Type: String
 
+  PythonComponentsServiceExternalUrl:
+    Type: String
+    Default: none
+  
   GoComponentsServiceExternalUrl:
     Type: String
     Default: none
@@ -276,10 +280,10 @@ Resources:
         ProductsServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
         UsersServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
         CartsServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
-        VideosServiceExternalUrl: !Ref VideosServiceExternalUrl
+        VideosServiceExternalUrl: !Ref PythonComponentsServiceExternalUrl
         OrdersServiceExternalUrl: !Ref GoComponentsServiceExternalUrl
-        RecommendationsServiceExternalUrl: !Ref RecommendationsServiceExternalUrl
-        SearchServiceExternalUrl: !Ref SearchServiceExternalUrl
+        RecommendationsServiceExternalUrl: !Ref PythonComponentsServiceExternalUrl
+        SearchServiceExternalUrl: !Ref PythonComponentsServiceExternalUrl
         PinpointAppId: !Ref PinpointAppId
         ParameterPersonalizeEventTrackerId: !Ref ParameterPersonalizeEventTrackerId
         ParameterAmplitudeApiKey: !Ref ParameterAmplitudeApiKey

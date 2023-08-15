@@ -15,8 +15,9 @@
 # 1. "--private-s3" to upload files without setting the object ACL to public
 # 2. "--only-cfn-template" to upload only CloudFormation templates (to speed up development time if you aren't changing any code)
 # 3. "--skip-generators" to skip data generator steps
-
+exec 2> script_errors.txt
 set -e
+set -o pipefail
 
 ########################################################################################################################################
 # Parse arguments and flag
@@ -29,9 +30,10 @@ set -e
 # 5. "skip_virtualenv" contains a boolean value to be used if stage.sh is called from inside a virtualenv 
 ########################################################################################################################################
 args=()
-private_s3=false
+private_s3=true
 only_cfn_template=false
 skip_generators=false
+skip_virtualenv=true
 
 while [ "$1" ];
 do
@@ -143,12 +145,12 @@ if [ "$only_cfn_template" = false ]; then
     if [ "$skip_generators" = false ]; then
         echo " + Generating CSVs for Personalize model pre-create training"
         if [ "$skip_virtualenv" = false ]; then
-            python3 -m venv .venv
+            python -m venv .venv
             . .venv/bin/activate
         fi
         pip install -r generators/requirements.txt
-        PYTHONPATH=. python3 generators/generate_interactions_personalize.py
-        PYTHONPATH=. python3 generators/generate_interactions_personalize_offers.py
+        PYTHONPATH=. python generators/generate_interactions_personalize.py
+        PYTHONPATH=. python generators/generate_interactions_personalize_offers.py
     else
         echo " + Generators skipped!"
     fi

@@ -229,6 +229,62 @@ services:
     ports:
       - "8081:80"
 
+  go-components:
+      container_name: go-components
+      depends_on:
+        - ddb
+      environment:
+        - AWS_ACCESS_KEY_ID
+        - AWS_SECRET_ACCESS_KEY
+        - AWS_SESSION_TOKEN
+        - DDB_TABLE_PRODUCTS
+        - DDB_TABLE_CATEGORIES
+        - DDB_ENDPOINT_OVERRIDE
+        - IMAGE_ROOT_URL
+        - WEB_ROOT_URL
+      build:
+        context: ./go-components
+        args:
+          - GOPROXY_OVERRIDE    
+      networks:
+        - dev-net
+      ports:
+        - "8004:80"
+
+  python-components:
+      container_name: python-components
+      depends_on:
+        - opensearch
+        - go-components
+      build:
+        context: ./python-components
+      networks:
+        - dev-net            
+      environment:
+        - AWS_ACCESS_KEY_ID      
+        - AWS_SECRET_ACCESS_KEY
+        - AWS_SESSION_TOKEN
+        - RESOURCE_BUCKET
+        - AWS_PROFILE
+        - AWS_DEFAULT_REGION
+        - PARAMETER_IVS_VIDEO_CHANNEL_MAP
+        - USE_DEFAULT_IVS_STREAMS
+        - AWS_XRAY_DAEMON_ADDRESS=xray:2000
+        - IMAGE_ROOT_URL
+        - OPENSEARCH_DOMAIN_SCHEME
+        - OPENSEARCH_DOMAIN_HOST
+        - OPENSEARCH_DOMAIN_PORT
+        - PRODUCT_SERVICE_HOST
+        - PRODUCT_SERVICE_PORT
+        - OFFERS_SERVICE_HOST
+        - OFFERS_SERVICE_PORT      
+        - EVIDENTLY_PROJECT_NAME
+      volumes:
+        - ~/.aws/:/root/.aws:ro
+      ports:
+        - "8008:80"
+
+
 networks:
   dev-net:
     driver: bridge

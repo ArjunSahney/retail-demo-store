@@ -51,6 +51,10 @@ Parameters:
   FargateServiceName:
     Type: String
 
+  PythonComponentsServiceExternalUrl:
+    Type: String
+    Default: none
+
   GoComponentsServiceExternalUrl:
     Type: String
     Default: none
@@ -331,13 +335,13 @@ Resources:
           - Name: CARTS_SERVICE_URL
             Value: !Sub ${GoComponentsServiceExternalUrl}
           - Name: VIDEOS_SERVICE_URL
-            Value: !Sub ${VideosServiceExternalUrl}
+            Value: !Sub ${PythonComponentsServiceExternalUrl}
           - Name: ORDERS_SERVICE_URL
             Value: !Sub ${GoComponentsServiceExternalUrl}
           - Name: RECOMMENDATIONS_SERVICE_URL
-            Value: !Sub ${RecommendationsServiceExternalUrl}
+            Value: !Sub ${PythonComponentsServiceExternalUrl}
           - Name: SEARCH_SERVICE_URL
-            Value: !Sub ${SearchServiceExternalUrl}
+            Value: !Sub ${PythonComponentsServiceExternalUrl}
           - Name: DEPLOYED_REGION
             Value: !Ref AWS::Region
           - Name: PINPOINT_APP_ID

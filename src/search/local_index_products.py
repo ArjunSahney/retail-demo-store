@@ -62,7 +62,11 @@ else:
     r = requests.put(url, headers = headers, json = request_body)
     logger.info('Indexing products...')
     products_indexed = 0
-    with open('../products/src/products-service/data/products.yaml') as file:
+    
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    yaml_path = os.path.join(script_directory, '../products/src/products-service/data/products.yaml')
+    print(yaml_path)
+    with open(yaml_path) as file:
         products_list = yaml.safe_load(file)
 
         for product in products_list:
