@@ -33,7 +33,7 @@ DEFAULT_THUMB_FNAME = 'default_thumb.png'
 
 SUBTITLE_FORMAT = 'srt'
 LOCAL_VIDEO_DIR = '/app/video-files/'
-DEFAULT_STREAMS_CONFIG_S3_PATH = 'retaildemostore/videos/default_streams/default_streams.json'
+DEFAULT_STREAMS_CONFIG_S3_PATH = '/videos/default_streams/default_streams.json'
 
 # -- Parameterised ffmpeg commands
 FFMPEG_STREAM_CMD = """ffmpeg -loglevel panic -hide_banner -re -stream_loop -1 -i \"{video_filepath}\" \

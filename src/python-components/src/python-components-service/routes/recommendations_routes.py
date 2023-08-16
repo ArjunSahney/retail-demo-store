@@ -45,13 +45,13 @@ sts = boto3.client('sts')
 cw_events = boto3.client('events')
 
 # SSM parameter name for the Personalize filter for purchased and c-store items
-filter_purchased_param_name = '/retaildemostore/personalize/filters/filter-purchased-arn'
-filter_cstore_param_name = '/retaildemostore/personalize/filters/filter-cstore-arn'
-filter_purchased_cstore_param_name = '/retaildemostore/personalize/filters/filter-purchased-and-cstore-arn'
-filter_include_categories_param_name = '/retaildemostore/personalize/filters/filter-include-categories-arn'
-promotion_filter_param_name = '/retaildemostore/personalize/filters/promoted-items-filter-arn'
-promotion_filter_no_cstore_param_name = '/retaildemostore/personalize/filters/promoted-items-no-cstore-filter-arn'
-offers_arn_param_name = '/retaildemostore/personalize/personalized-offers-arn'
+filter_purchased_param_name = '/personalize/filters/filter-purchased-arn'
+filter_cstore_param_name = '/personalize/filters/filter-cstore-arn'
+filter_purchased_cstore_param_name = '/personalize/filters/filter-purchased-and-cstore-arn'
+filter_include_categories_param_name = '/personalize/filters/filter-include-categories-arn'
+promotion_filter_param_name = '/personalize/filters/promoted-items-filter-arn'
+promotion_filter_no_cstore_param_name = '/personalize/filters/promoted-items-no-cstore-filter-arn'
+offers_arn_param_name = '/personalize/personalized-offers-arn'
 
 # -- Shared Functions
 
